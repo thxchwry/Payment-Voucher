@@ -1,4 +1,4 @@
-# ระบบใบสำคัญจ่าย — บริษัท วิษณุ โยธา 99 จำกัด 🏗️📄
+# ระบบใบสำคัญจ่าย 🏗️📄
 
 โปรเจกต์ระบบจัดการ **ใบสำคัญจ่าย (Payment Voucher)** สำหรับบริษัทรับเหมาก่อสร้าง พัฒนาด้วย **Microsoft Access** รองรับการบันทึกการจ่ายเงิน แยกตามแผนกและโครงการ พร้อมพิมพ์ใบสำคัญจ่ายได้ทันที
 
@@ -13,8 +13,6 @@
 ## 🛠️ เทคโนโลยีที่ใช้
 
 - **Platform**: Microsoft Access 2013/2016 (.accdb)
-- **Database Engine**: Microsoft ACE (Access Connectivity Engine)
-- **Language**: VBA (Visual Basic for Applications)
 - **Excel Integration**: `BahtText` function ผ่าน Microsoft Excel 15.0 Object Library (แปลงตัวเลขเป็นตัวอักษรภาษาไทย)
 - **Font**: Angsana New / Cordia New / Calibri
 
@@ -31,14 +29,6 @@
 | **PV**         | ID, VoucherNo, Date, Date_Bill, Paid_To, Cash, Bank, Detail, Cheque_No, Due_Date, Department_ID, Job_No, Paid_For | ใบสำคัญจ่ายหลัก               |
 | **PV_Detail**  | PV_ID, Particulars, Bill_NO, Amount                                                                               | รายละเอียดรายการในใบสำคัญจ่าย |
 | **Detail**     | ID, Particulars, BillNo, Amount                                                                                   | ตารางรายละเอียดย่อย           |
-
-### 🔗 ความสัมพันธ์ระหว่างตาราง (Relationships)
-
-```
-Department ──────────── PV ──────────── PV_Detail
-                         │
-Job ─────────────────────┘
-```
 
 ---
 
@@ -88,46 +78,3 @@ Job ─────────────────────┘
 - 💰 **รองรับหลายรายการ** — บันทึกได้หลายบิลต่อใบสำคัญจ่าย
 - 🖨️ **พิมพ์ใบสำคัญจ่าย** — ออกรายงานพร้อมตัวอักษรภาษาไทย (บาทอักษร)
 - 🔍 **ค้นหาข้อมูล** — ฟังก์ชัน Find Record ในฟอร์มหลัก
-
----
-
-## 📝 ตัวอย่างข้อมูลในระบบ
-
-**แผนกตัวอย่าง:** ช่าง, การเงิน, บัญชี
-
-**รายการจ่ายตัวอย่าง:** น้ำมัน, ลวดเชื่อม, รถน้ำ, ปั๊ม, น้ำ, บ้าน
-
----
-
-## 🗂️ โครงสร้างไฟล์
-
-```text
-Pro/
-└── บริษัท วิษณุ โยธา 99 จำกัด.accdb    # ไฟล์ฐานข้อมูล Microsoft Access หลัก
-                                          # (รวม Tables, Forms, Queries, Reports, VBA)
-```
-
----
-
-## ⚙️ วิธีใช้งาน
-
-### ความต้องการของระบบ
-
-- **Microsoft Access 2013** หรือสูงกว่า
-- **Microsoft Excel 2013** หรือสูงกว่า (สำหรับฟังก์ชัน BahtText แปลงตัวเลขเป็นตัวอักษร)
-- ระบบปฏิบัติการ **Windows**
-
-### การเปิดใช้งาน
-
-1. เปิดไฟล์ `บริษัท วิษณุ โยธา 99 จำกัด.accdb` ด้วย Microsoft Access
-2. หากมีแจ้งเตือน Security Warning ให้กด **Enable Content**
-3. เลือกจัดการข้อมูล **แผนก** หรือ **โครงการ** ผ่านฟอร์มที่เกี่ยวข้อง
-4. กรอกข้อมูลใบสำคัญจ่ายผ่านฟอร์มหลัก แล้วกด **Print Report** เพื่อพิมพ์
-
----
-
-## ⚠️ หมายเหตุ
-
-- ต้องติดตั้ง **Microsoft Excel** ด้วย เนื่องจากระบบเรียกใช้ `WorksheetFunction.BahtText` สำหรับแปลงจำนวนเงินเป็นตัวอักษรภาษาไทย
-- ไฟล์ `.accdb` เปิดได้เฉพาะบน **Microsoft Access เท่านั้น**
-- ควร **Backup ไฟล์** ก่อนใช้งานทุกครั้ง
